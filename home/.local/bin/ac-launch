@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+# Dispatcher for Assetto Corsa launch modes.
+#
+# Steam launch options for app 244210:
+#   /home/josephc/.local/bin/ac-launch %command%
+#
+# Modes: cm | vr | vr-vanilla | vanilla
+#   vr-vanilla and vanilla are not in the picker; reach them with
+#   BEAMNG-style BEAMNG_MODE equivalent: AC_MODE=<mode>, or the mode file.
+#
+# The original AssettoCorsa.exe is left untouched on disk; Content Manager is
+# selected by rewriting the exe path inside "$@". That survives Steam file
+# validation, unlike the usual "rename CM over AssettoCorsa.exe" approach.
+#
+# This script runs OUTSIDE the pressure-vessel container, so env vars exported
+# here still reach Proton's container setup.
+
+set -uo pipefail
+
+MODE_FILE="${XDG_STATE_HOME:-$HOME/.local/state}/ac-mode"
+OPENCOMPOSITE=/opt/opencomposite
+WIVRN_JSON=/usr/share/openxr/1/openxr_wivrn.json
+
+die() {
+    echo "ac-launch: $*" >&2
+    command -v yad >/dev/null && yad --error --timeout=20 --text="$*" 2>/dev/null
+    exit 1
+}
+
+warn_no_wivrn() {
+    pgrep -f "[w]ivrn-server" >/dev/null && return
+    yad --warning --timeout=15 --timeout-indicator=bottom 2>/dev/null \
+        --text="WiVRn server is not running.\nStart it (systemctl --user start wivrn)\nand connect your Quest first."
+}
+
+# AC uses OpenVR, not OpenXR. OpenComposite reimplements OpenVR on top of
+# OpenXR so the game reaches WiVRn without SteamVR. VR_OVERRIDE is how the
+# OpenVR client locates a non-default runtime; the path must also be bound
+# into the container, hence the PRESSURE_VESSEL entry.
+vr_env() {
+    [[ -e $OPENCOMPOSITE/openvrpaths.vrpath ]] || die "OpenComposite not found at $OPENCOMPOSITE"
+    warn_no_wivrn
+    export VR_OVERRIDE="$OPENCOMPOSITE"
+    export XR_RUNTIME_JSON="/run/host$WIVRN_JSON"
+    export PRESSURE_VESSEL_FILESYSTEMS_RW="${XDG_RUNTIME_DIR}/wivrn/comp_ipc:$OPENCOMPOSITE"
+}
+
+pick_mode() {
+    yad --title="Assetto Corsa" --text="How do you want to play?" \
+        --width=400 --center --timeout=30 --timeout-indicator=bottom \
+        --button="Content Manager!!Flat screen, mods, No Hesi:10" \
+        --button="VR!!Content Manager + OpenComposite + WiVRn:11" \
+        --button="Cancel:1" >/dev/null 2>&1
+    case $? in
+        10) echo cm ;;
+        11) echo vr ;;
+        70) echo cm ;;        # timed out
+        *)  echo "" ;;        # cancelled or closed
+    esac
+}
+
+mode="${AC_MODE:-}"
+
+if [[ -z $mode && -r $MODE_FILE ]]; then
+    mode=$(<"$MODE_FILE")
+    rm -f "$MODE_FILE"
+fi
+
+[[ -z $mode ]] && mode=$(pick_mode)
+[[ -z $mode ]] && exit 0
+
+# Swap the launcher exe for Content Manager inside the argument array.
+use_cm() {
+    cm_args=("${@/AssettoCorsa.exe/Content Manager.exe}")
+    printf '%s\n' "${cm_args[@]}" | grep -q "Content Manager.exe" \
+        || die "Could not substitute Content Manager into the launch command"
+}
+
+case "$mode" in
+cm)
+    use_cm "$@"
+    exec "${cm_args[@]}"
+    ;;
+
+vr)
+    vr_env
+    use_cm "$@"
+    exec "${cm_args[@]}"
+    ;;
+
+vr-vanilla)
+    # Fallback: the VR-on-Linux DB notes Content Manager can fail to detect the
+    # headset, in which case the stock launcher is the documented workaround.
+    vr_env
+    exec "$@"
+    ;;
+
+vanilla)
+    exec "$@"
+    ;;
+
+*)
+    die "Unknown mode: $mode"
+    ;;
+esac

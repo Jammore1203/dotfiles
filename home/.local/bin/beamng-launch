@@ -1,0 +1,133 @@
+#!/usr/bin/env bash
+# Dispatcher for BeamNG.drive launch modes.
+#
+# Steam launch options for app 284160:
+#   /home/josephc/.local/bin/beamng-launch %command%
+#
+# Mode is taken from, in order:
+#   1. $BEAMNG_MODE
+#   2. a one-shot mode file written by the .desktop entries (consumed on read)
+#   3. an interactive picker
+#
+# Modes: vanilla | beammp | vr | vr-setup | vr-proton
+#   vr-setup and vr-proton are not in the picker; reach them with
+#   BEAMNG_MODE=<mode>, or by writing the name to the mode file.
+#
+# This script runs OUTSIDE the pressure-vessel container, so env vars exported
+# here still reach Proton's container setup.
+#
+# NB: the picker uses yad, not zenity. zenity 4.x is GTK4/libadwaita and
+# collapses --list rows to zero height, producing a visibly empty list.
+
+set -uo pipefail
+
+MODE_FILE="${XDG_STATE_HOME:-$HOME/.local/state}/beamng-mode"
+GAME_DIR="/home/josephc/.local/share/Steam/steamapps/common/BeamNG.drive"
+BEAMMP_BIN="$HOME/.local/bin/BeamMP-Launcher"
+BEAMMP_DIR="$HOME/.local/share/BeamMP"
+WIVRN_JSON=/usr/share/openxr/1/openxr_wivrn.json
+VR_USERPATH="$HOME/.local/share/BeamNG-VR"
+
+die() {
+    echo "beamng-launch: $*" >&2
+    command -v yad >/dev/null && yad --error --timeout=20 --text="$*" 2>/dev/null
+    exit 1
+}
+
+warn_no_wivrn() {
+    pgrep -x wivrn-server >/dev/null && return
+    yad --warning --timeout=15 --timeout-indicator=bottom 2>/dev/null \
+        --text="WiVRn server is not running.\nStart it (systemctl --user start wivrn)\nand connect your Quest before enabling VR."
+}
+
+# Native Linux build, own userfolder. Shared with vr and vr-setup.
+run_native() {
+    [[ -x $GAME_DIR/BinLinux/BeamNG.drive.x64 ]] || die "Native Linux build not found"
+    mkdir -p "$VR_USERPATH"
+    cd "$GAME_DIR/BinLinux"
+    # Separate userfolder from the Proton build. Sharing one caused three
+    # distinct problems: the D3D12 shader cache blocked procedural shader
+    # regeneration ("Failed to remove autogenConditioners.h"), the Windows
+    # xinputcache.json leaked into native input detection, and the BeamMP mod
+    # loaded in VR and spammed connection-refused every 2s.
+    exec ./BeamNG.drive.x64 -userpath "$VR_USERPATH" "$@"
+}
+
+pick_mode() {
+    yad --title="BeamNG.drive" --text="How do you want to play?" \
+        --width=400 --center --timeout=30 --timeout-indicator=bottom \
+        --button="Singleplayer!!Proton, no launcher:10" \
+        --button="BeamMP!!Proton + BeamMP launcher:11" \
+        --button="VR!!Native Linux build + WiVRn, autostarts VR:12" \
+        --button="Cancel:1" >/dev/null 2>&1
+    case $? in
+        10) echo vanilla ;;
+        11) echo beammp ;;
+        12) echo vr ;;
+        70) echo vanilla ;;   # timed out
+        *)  echo "" ;;        # cancelled or closed
+    esac
+}
+
+mode="${BEAMNG_MODE:-}"
+
+if [[ -z $mode && -r $MODE_FILE ]]; then
+    mode=$(<"$MODE_FILE")
+    rm -f "$MODE_FILE"
+fi
+
+[[ -z $mode ]] && mode=$(pick_mode)
+[[ -z $mode ]] && exit 0
+
+case "$mode" in
+vanilla)
+    exec "$@"
+    ;;
+
+beammp)
+    [[ -x $BEAMMP_BIN ]] || die "BeamMP launcher missing at $BEAMMP_BIN"
+    mkdir -p "$BEAMMP_DIR"
+    # cwd matters: the launcher caches server mods into ./Resources
+    ( cd "$BEAMMP_DIR" && exec "$BEAMMP_BIN" --no-launch ) &
+    launcher=$!
+    trap 'kill "$launcher" 2>/dev/null' EXIT
+    "$@"
+    ;;
+
+vr)
+    # Native build is the ONLY working VR path. Proton cannot work with WiVRn:
+    # the runtime requires VK_KHR_external_{memory,semaphore,fence}_fd, and
+    # winevulkan exposes only the _win32 equivalents, so BeamNG's extension
+    # check fails and its "restart to load them" retry can never succeed.
+    #
+    # -vr forces Vulkan on and autostarts VR, so no menu navigation in-headset.
+    warn_no_wivrn
+    export XR_RUNTIME_JSON="$WIVRN_JSON"
+    export OXR_PARALLEL_VIEWS=1          # stops doubled UI elements
+    run_native -vr
+    ;;
+
+vr-setup)
+    # Same native build and same VR userfolder, but flat on the monitor: no -vr.
+    # Use this to rebind the G920, which native registers as generic "joystick4"
+    # with accelerate landing on yaxis (the clutch) instead of zaxis (throttle).
+    # Bindings persist into the vr mode above, so set them up here with the
+    # headset off rather than fighting the menus inside it.
+    run_native
+    ;;
+
+vr-proton)
+    # Kept only for testing. Known broken with WiVRn - see the vr comment.
+    # Would need an OpenXR runtime that speaks win32 handles, or a Proton with
+    # working VK_WINE_openxr_device_extensions translation for this game.
+    warn_no_wivrn
+    export XR_RUNTIME_JSON="/run/host$WIVRN_JSON"
+    export OXR_PARALLEL_VIEWS=1
+    export PRESSURE_VESSEL_FILESYSTEMS_RW="${XDG_RUNTIME_DIR}/wivrn/comp_ipc"
+    exec "$@" -vr
+    ;;
+
+*)
+    die "Unknown mode: $mode"
+    ;;
+esac

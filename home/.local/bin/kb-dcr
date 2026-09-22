@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# G4 — hard-restart the docker compose stack for the active project.
+# Replaces the hand-run: docker compose down -v && docker compose up -d
+#
+# Override the project per-invocation:  kb-dcr /path/to/project
+set -uo pipefail
+
+PROJECT="${1:-$HOME/Documents/access-cv-gen}"
+
+notify() {
+    notify-send -a "Macros" -i docker \
+        -h string:x-canonical-private-synchronous:kb-dcr "$1" "${2:-}"
+}
+
+if [ ! -d "$PROJECT" ]; then
+    notify "Compose" "No such project:\n$PROJECT"
+    exit 1
+fi
+
+cd "$PROJECT" || exit 1
+
+if ! compgen -G "docker-compose.y*ml" >/dev/null && ! compgen -G "compose.y*ml" >/dev/null; then
+    notify "Compose" "No compose file in\n$(basename "$PROJECT")"
+    exit 1
+fi
+
+notify "Compose" "Restarting $(basename "$PROJECT")…"
+
+if ! out=$(docker compose down -v 2>&1); then
+    notify "Compose" "down failed:\n$(echo "$out" | tail -2)"
+    exit 1
+fi
+
+if out=$(docker compose up -d 2>&1); then
+    running=$(docker compose ps --services --filter status=running 2>/dev/null | paste -sd', ' -)
+    notify "Compose" "$(basename "$PROJECT") up${running:+\n$running}"
+else
+    notify "Compose" "up failed:\n$(echo "$out" | tail -2)"
+    exit 1
+fi

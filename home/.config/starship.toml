@@ -1,0 +1,95 @@
+# ~/.config/starship.toml — Gruvbox Dark, two-line minimal prompt
+
+add_newline = true
+command_timeout = 800
+
+format = """
+[](fg:#3c3836)\
+$os\
+$username\
+[](bg:#504945 fg:#3c3836)\
+$directory\
+[](bg:#282828 fg:#504945)\
+$git_branch\
+$git_status\
+[](fg:#282828)\
+$fill\
+$cmd_duration\
+$time\
+$line_break\
+$character"""
+
+[fill]
+symbol = " "
+
+[os]
+disabled = false
+style = "bg:#3c3836 fg:#fe8019"
+format = "[ $symbol ]($style)"
+
+[os.symbols]
+Arch = "󰣇"
+EndeavourOS = "󰣇"
+Linux = "󰌽"
+
+[username]
+show_always = false
+style_user = "bg:#3c3836 fg:#ebdbb2"
+style_root = "bg:#3c3836 fg:#fb4934"
+format = "[$user ]($style)"
+
+[directory]
+style = "bg:#504945 fg:#fabd2f"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+read_only = " 󰌾"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Videos" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:#282828 fg:#8ec07c"
+format = "[ $symbol $branch ]($style)"
+
+[git_status]
+style = "bg:#282828 fg:#fb4934"
+format = "[$all_status$ahead_behind ]($style)"
+
+[cmd_duration]
+min_time = 2000
+style = "fg:#928374"
+format = "[󱎫 $duration ]($style)"
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "fg:#928374"
+format = "[ $time ]($style)"
+
+[character]
+success_symbol = "[❯](bold fg:#b8bb26)"
+error_symbol = "[❯](bold fg:#fb4934)"
+vimcmd_symbol = "[❮](bold fg:#fabd2f)"
+
+[nodejs]
+symbol = " "
+style = "fg:#b8bb26"
+
+[python]
+symbol = " "
+style = "fg:#fabd2f"
+
+[rust]
+symbol = " "
+style = "fg:#fe8019"
+
+[docker_context]
+symbol = " "
+style = "fg:#83a598"

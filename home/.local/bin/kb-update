@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# G6 — full system update in a visible terminal.
+# Replaces the hand-run pair: yay  +  flatpak update
+set -uo pipefail
+
+CMD='
+echo "── pacman / AUR ──────────────────────────────"
+yay -Syu
+echo
+echo "── flatpak ───────────────────────────────────"
+flatpak update
+echo
+echo "── done ──────────────────────────────────────"
+echo "Press Enter to close."
+read -r
+'
+
+if command -v kitty >/dev/null 2>&1; then
+    exec kitty --title "system update" bash -c "$CMD"
+elif command -v konsole >/dev/null 2>&1; then
+    exec konsole --profile Gruvbox -e bash -c "$CMD"
+else
+    notify-send -a "Macros" "Update" "No terminal found"
+    exit 1
+fi

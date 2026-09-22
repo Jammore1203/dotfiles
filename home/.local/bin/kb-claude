@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# G5 — open a terminal continuing the last Claude Code session.
+# Replaces the hand-run: claude -c   (40 of the last 500 history lines)
+set -uo pipefail
+
+WORKDIR="${1:-$HOME}"
+
+# Prefer the terminal that is actually installed, themed Gruvbox either way.
+if command -v kitty >/dev/null 2>&1; then
+    exec kitty --directory "$WORKDIR" --title "claude -c" \
+         bash -c 'claude -c || claude; exec bash'
+elif command -v konsole >/dev/null 2>&1; then
+    exec konsole --profile Gruvbox --workdir "$WORKDIR" \
+         -e bash -c 'claude -c || claude; exec bash'
+elif command -v tabby >/dev/null 2>&1; then
+    exec tabby
+else
+    notify-send -a "Macros" "Claude" "No terminal found"
+    exit 1
+fi

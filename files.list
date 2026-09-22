@@ -1,0 +1,27 @@
+# Paths relative to $HOME that sync.sh mirrors into this repo.
+# Work-specific scripts (kb-360ss, kb-vpn) are deliberately not listed.
+.config/kitty/kitty.conf
+.config/starship.toml
+.config/fastfetch/config.jsonc
+.config/neofetch/config.conf
+.config/kdeglobals
+.config/kwinrc
+.config/plasmarc
+.config/konsolerc
+.config/plasma-org.kde.plasma.desktop-appletsrc
+.config/ksplashrc
+.config/kscreenlockerrc
+.config/ckb-next/ckb-next.conf
+.config/easyeffects/db/equalizerrc
+.config/easyeffects/db/easyeffectsrc
+.local/share/konsole/GruvboxDark.colorscheme
+.local/share/konsole/Gruvbox.profile
+.local/share/easyeffects/output/X3_Reference.json
+.local/share/easyeffects/output/X3_Rock.json
+.local/share/easyeffects/output/X3_Metal.json
+.local/bin/ac-launch
+.local/bin/beamng-launch
+.local/bin/kb-claude
+.local/bin/kb-dcr
+.local/bin/kb-update
+.bashrc
