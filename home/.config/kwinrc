@@ -17,12 +17,20 @@ Name_6=६
 Number=6
 Rows=1
 
+[Effect-better-blur-dx]
+BlurDecorations=true
+BlurDocks=true
+BlurMenus=true
+BlurStrength=12
+NoiseStrength=2
+
 [Effect-blur]
-BlurStrength=15
-NoiseStrength=3
+BlurStrength=12
+NoiseStrength=2
 
 [Plugins]
-blurEnabled=true
+better_blur_dxEnabled=true
+blurEnabled=false
 contrastEnabled=true
 kwin4_effect_dimscreenEnabled=false
 
@@ -79,5 +87,5 @@ BorderSize=None
 BorderSizeAuto=false
 ButtonsOnLeft=
 ButtonsOnRight=IAX
-library=org.kde.breeze
-theme=Breeze
+library=org.kde.kwin.aurorae.v2
+theme=__aurorae__svg__MacTahoe-Dark

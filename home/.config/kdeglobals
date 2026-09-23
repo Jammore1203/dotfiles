@@ -1,6 +1,6 @@
 [ColorEffects:Disabled]
 ChangeSelectionColor=
-Color=60,56,54
+Color=56,56,56
 ColorAmount=0
 ColorEffect=0
 ContrastAmount=0.65
@@ -11,7 +11,7 @@ IntensityEffect=2
 
 [ColorEffects:Inactive]
 ChangeSelectionColor=true
-Color=80,73,69
+Color=112,111,110
 ColorAmount=0.025
 ColorEffect=2
 ContrastAmount=0.1
@@ -21,129 +21,129 @@ IntensityAmount=0
 IntensityEffect=0
 
 [Colors:Button]
-BackgroundAlternate=120,93,175
-BackgroundNormal=60,56,54
+BackgroundAlternate=113,87,170
+BackgroundNormal=36,36,36
 DecorationFocus=146,110,228
 DecorationHover=146,110,228
 ForegroundActive=146,110,228
-ForegroundInactive=146,131,116
+ForegroundInactive=189,195,199
 ForegroundLink=209,199,242
-ForegroundNegative=251,73,52
-ForegroundNeutral=250,189,47
-ForegroundNormal=235,219,178
-ForegroundPositive=184,187,38
-ForegroundVisited=211,134,155
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=222,222,222
+ForegroundPositive=39,174,96
+ForegroundVisited=127,140,141
 
 [Colors:Complementary]
-BackgroundAlternate=50,48,47
-BackgroundNormal=29,32,33
+BackgroundAlternate=66,66,66
+BackgroundNormal=51,51,51
 DecorationFocus=146,110,228
 DecorationHover=146,110,228
 ForegroundActive=146,110,228
-ForegroundInactive=146,131,116
+ForegroundInactive=136,136,136
 ForegroundLink=209,199,242
-ForegroundNegative=251,73,52
-ForegroundNeutral=250,189,47
-ForegroundNormal=235,219,178
-ForegroundPositive=184,187,38
-ForegroundVisited=211,134,155
+ForegroundNegative=237,21,21
+ForegroundNeutral=201,206,59
+ForegroundNormal=222,222,222
+ForegroundPositive=17,209,22
+ForegroundVisited=49,91,239
 
 [Colors:Header]
-BackgroundAlternate=50,48,47
-BackgroundNormal=29,32,33
+BackgroundAlternate=66,66,66
+BackgroundNormal=51,51,51
 DecorationFocus=146,110,228
 DecorationHover=146,110,228
 ForegroundActive=146,110,228
-ForegroundInactive=146,131,116
+ForegroundInactive=136,136,136
 ForegroundLink=209,199,242
-ForegroundNegative=251,73,52
-ForegroundNeutral=250,189,47
-ForegroundNormal=235,219,178
-ForegroundPositive=184,187,38
-ForegroundVisited=211,134,155
+ForegroundNegative=237,21,21
+ForegroundNeutral=201,206,59
+ForegroundNormal=222,222,222
+ForegroundPositive=17,209,22
+ForegroundVisited=49,91,239
 
 [Colors:Header][Inactive]
-BackgroundAlternate=50,48,47
-BackgroundNormal=40,40,40
-DecorationFocus=254,128,25
-DecorationHover=254,128,25
-ForegroundActive=254,128,25
-ForegroundInactive=146,131,116
-ForegroundLink=131,165,152
-ForegroundNegative=251,73,52
-ForegroundNeutral=250,189,47
-ForegroundNormal=235,219,178
-ForegroundPositive=184,187,38
-ForegroundVisited=211,134,155
+BackgroundAlternate=46,46,46
+BackgroundNormal=36,36,36
+DecorationFocus=49,91,239
+DecorationHover=49,91,239
+ForegroundActive=49,91,239
+ForegroundInactive=136,136,136
+ForegroundLink=49,91,239
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=222,222,222
+ForegroundPositive=39,174,96
+ForegroundVisited=120,120,120
 
 [Colors:Selection]
-BackgroundAlternate=110,86,169
-BackgroundNormal=110,86,169
+BackgroundAlternate=113,87,170
+BackgroundNormal=113,87,170
 DecorationFocus=146,110,228
 DecorationHover=146,110,228
 ForegroundActive=146,110,228
 ForegroundInactive=255,255,255
-ForegroundLink=118,54,221
-ForegroundNegative=29,32,33
-ForegroundNeutral=29,32,33
+ForegroundLink=209,199,242
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
 ForegroundNormal=255,255,255
-ForegroundPositive=29,32,33
-ForegroundVisited=29,32,33
+ForegroundPositive=39,174,96
+ForegroundVisited=128,152,239
 
 [Colors:Tooltip]
-BackgroundAlternate=50,48,47
-BackgroundNormal=29,32,33
+BackgroundAlternate=77,77,77
+BackgroundNormal=51,51,51
 DecorationFocus=146,110,228
 DecorationHover=146,110,228
 ForegroundActive=146,110,228
-ForegroundInactive=146,131,116
+ForegroundInactive=189,195,199
 ForegroundLink=209,199,242
-ForegroundNegative=251,73,52
-ForegroundNeutral=250,189,47
-ForegroundNormal=235,219,178
-ForegroundPositive=184,187,38
-ForegroundVisited=211,134,155
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=222,222,222
+ForegroundPositive=39,174,96
+ForegroundVisited=127,140,141
 
 [Colors:View]
-BackgroundAlternate=40,40,40
-BackgroundNormal=29,32,33
+BackgroundAlternate=48,48,48
+BackgroundNormal=36,36,36
 DecorationFocus=146,110,228
 DecorationHover=146,110,228
 ForegroundActive=146,110,228
-ForegroundInactive=146,131,116
+ForegroundInactive=136,136,136
 ForegroundLink=209,199,242
-ForegroundNegative=251,73,52
-ForegroundNeutral=250,189,47
-ForegroundNormal=235,219,178
-ForegroundPositive=184,187,38
-ForegroundVisited=211,134,155
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=222,222,222
+ForegroundPositive=39,174,96
+ForegroundVisited=120,120,120
 
 [Colors:Window]
-BackgroundAlternate=50,48,47
-BackgroundNormal=40,40,40
+BackgroundAlternate=46,46,46
+BackgroundNormal=36,36,36
 DecorationFocus=146,110,228
 DecorationHover=146,110,228
 ForegroundActive=146,110,228
-ForegroundInactive=146,131,116
+ForegroundInactive=136,136,136
 ForegroundLink=209,199,242
-ForegroundNegative=251,73,52
-ForegroundNeutral=250,189,47
-ForegroundNormal=235,219,178
-ForegroundPositive=184,187,38
-ForegroundVisited=211,134,155
+ForegroundNegative=218,68,83
+ForegroundNeutral=246,116,0
+ForegroundNormal=222,222,222
+ForegroundPositive=39,174,96
+ForegroundVisited=120,120,120
 
 [General]
 BrowserApplication=brave-browser.desktop
-ColorScheme=GruvboxDark
-ColorSchemeHash=ea7226d5e23476f1d27a3ab8acf9aec0d891a860
+ColorScheme=MacTahoeDark
+ColorSchemeHash=5872089c8b503fb21e810c9ce69a635442aa7741
 XftAntialias=true
 XftHintStyle=hintslight
 XftSubPixel=rgb
 fixed=JetBrainsMono Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-font=JetBrainsMono Nerd Font,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-menuFont=JetBrainsMono Nerd Font,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-smallestReadableFont=JetBrainsMono Nerd Font,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
-toolBarFont=JetBrainsMono Nerd Font,9,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+font=Inter,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+menuFont=Inter,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+smallestReadableFont=Inter,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+toolBarFont=Inter,9,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 
 [Icons]
 Theme=Tela-dark
@@ -152,7 +152,7 @@ Theme=Tela-dark
 LookAndFeelPackage=com.github.vinceliuice.Layan
 contrast=4
 frameContrast=0.2
-widgetStyle=Breeze
+widgetStyle=kvantum
 
 [KFileDialog Settings]
 Allow Expansion=false
@@ -172,10 +172,10 @@ Speedbar Width=140
 View Style=DetailTree
 
 [WM]
-activeBackground=29,32,33
-activeBlend=254,128,25
-activeFont=JetBrainsMono Nerd Font,10,-1,5,600,0,0,0,0,0,0,0,0,0,0,1
-activeForeground=235,219,178
-inactiveBackground=40,40,40
-inactiveBlend=146,131,116
-inactiveForeground=146,131,116
+activeBackground=54,54,54
+activeBlend=171,171,171
+activeFont=Inter,10,-1,5,500,0,0,0,0,0,0,0,0,0,0,1
+activeForeground=222,222,222
+inactiveBackground=66,66,66
+inactiveBlend=85,85,85
+inactiveForeground=120,120,120
