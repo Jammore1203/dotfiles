@@ -18,11 +18,7 @@ Number=6
 Rows=1
 
 [Effect-better-blur-dx]
-BlurDecorations=true
-BlurDocks=true
-BlurMenus=true
-BlurStrength=12
-NoiseStrength=2
+BlurStrength=14
 
 [Effect-blur]
 BlurStrength=12
@@ -83,9 +79,6 @@ ElectricBorderTiling=true
 Scale=1
 
 [org.kde.kdecoration2]
-BorderSize=None
 BorderSizeAuto=false
 ButtonsOnLeft=
 ButtonsOnRight=IAX
-library=org.kde.kwin.aurorae.v2
-theme=__aurorae__svg__MacTahoe-Dark

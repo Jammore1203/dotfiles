@@ -17,7 +17,7 @@ plugin=org.kde.desktopcontainment
 wallpaperplugin=org.kde.image
 
 [Containments][159][Wallpaper][org.kde.image][General]
-Image=file:///home/josephc/Pictures/wallpapers/gruvbox-ultrawide.jpg
+Image=file:///usr/share/wallpapers/Next/
 SlidePaths=/home/josephc/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [Containments][220]
@@ -37,12 +37,17 @@ plugin=org.kde.plasma.kickoff
 popupHeight=517
 popupWidth=711
 
+[Containments][220][Applets][221][Configuration][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
+
 [Containments][220][Applets][221][Configuration][General]
 alphaSort=true
 applicationsDisplay=0
 favoritesDisplay=0
 favoritesPortedToKAstats=true
-icon=distributor-logo-endeavouros
+icon=yast-kernel
+systemFavorites=suspend\\,hibernate\\,reboot\\,shutdown
 
 [Containments][220][Applets][222]
 immutability=1
@@ -55,7 +60,7 @@ plugin=org.kde.plasma.icontasks
 [Containments][220][Applets][223][Configuration][General]
 fill=false
 indicateAudioStreams=true
-launchers=applications:systemsettings.desktop,preferred://filemanager,applications:org.kde.dolphin.desktop,preferred://browser
+launchers=applications:systemsettings.desktop,preferred://filemanager,applications:org.kde.dolphin.desktop,preferred://browser,applications:tabby.desktop
 maxStripes=1
 showOnlyCurrentActivity=true
 showOnlyCurrentDesktop=false
@@ -75,8 +80,8 @@ immutability=1
 lastScreen=-1
 location=0
 plugin=org.kde.plasma.systemtray
-popupHeight=436
-popupWidth=436
+popupHeight=444
+popupWidth=444
 wallpaperplugin=org.kde.image
 
 [Containments][220][Applets][225][Applets][226]
@@ -100,6 +105,7 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][220][Applets][225][Applets][230][Configuration][General]
+currentTab=streams
 migrated=true
 
 [Containments][220][Applets][225][Applets][231]
@@ -149,6 +155,10 @@ plugin=org.kde.plasma.mediacontroller
 [Containments][220][Applets][225][Applets][258]
 immutability=1
 plugin=org.kde.plasma.bluetooth
+
+[Containments][220][Applets][225][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
 
 [Containments][220][Applets][225][General]
 extraItems=org.kde.kdeconnect,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.weather,org.kde.plasma.volume,org.kde.plasma.printmanager,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.bluetooth,org.kde.plasma.cameraindicator,org.kde.plasma.devicenotifier,org.kde.plasma.battery,org.kde.plasma.networkmanagement,org.kde.kscreen,org.kde.plasma.brightness,org.kde.plasma.clipboard,org.kde.plasma.mediacontroller
@@ -334,7 +344,7 @@ plugin=org.kde.desktopcontainment
 wallpaperplugin=org.kde.image
 
 [Containments][52][Wallpaper][org.kde.image][General]
-Image=file:///home/josephc/Pictures/wallpapers/gruvbox-ultrawide.jpg
+Image=file:///usr/share/wallpapers/Next/
 SlidePaths=/home/josephc/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [Containments][78]
@@ -350,7 +360,7 @@ plugin=org.kde.desktopcontainment
 wallpaperplugin=org.kde.image
 
 [Containments][78][Wallpaper][org.kde.image][General]
-Image=file:///home/josephc/Pictures/wallpapers/gruvbox-ultrawide.jpg
+Image=file:///usr/share/wallpapers/Next/
 SlidePaths=/home/josephc/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [ScreenMapping]
