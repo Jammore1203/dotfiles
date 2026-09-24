@@ -204,8 +204,8 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][241][Applets][242][Configuration]
-popupHeight=517
-popupWidth=711
+popupHeight=521
+popupWidth=715
 
 [Containments][241][Applets][242][Configuration][General]
 alphaSort=true
@@ -274,8 +274,8 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][248][Applets][249][Configuration]
-popupHeight=517
-popupWidth=711
+popupHeight=525
+popupWidth=719
 
 [Containments][248][Applets][249][Configuration][General]
 alphaSort=true
