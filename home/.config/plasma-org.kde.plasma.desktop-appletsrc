@@ -80,8 +80,8 @@ immutability=1
 lastScreen=-1
 location=0
 plugin=org.kde.plasma.systemtray
-popupHeight=476
-popupWidth=476
+popupHeight=480
+popupWidth=480
 wallpaperplugin=org.kde.image
 
 [Containments][220][Applets][225][Applets][226]
