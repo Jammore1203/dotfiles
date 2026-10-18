@@ -345,8 +345,14 @@ location=0
 plugin=org.kde.desktopcontainment
 wallpaperplugin=org.kde.image
 
+[Containments][52][Wallpaper][com.github.catsout.wallpaperEngineKde][General]
+SteamLibraryPath[$e]=$HOME/.local/share/Steam
+WallpaperSource[$e]=file:$HOME/.local/share/Steam/steamapps/workshop/content/431960/2227187888/scene.json+scene
+WallpaperWorkShopId=2227187888
+
 [Containments][52][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/wallpapers/Next/
+FillMode=0
+Image=file:///home/josephc/Pictures/Jarvis, More Alcohol.png
 SlidePaths=/home/josephc/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [Containments][78]
@@ -362,7 +368,8 @@ plugin=org.kde.desktopcontainment
 wallpaperplugin=org.kde.image
 
 [Containments][78][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/wallpapers/Next/
+FillMode=0
+Image=file:///home/josephc/Pictures/Jarvis, More Alcohol.png
 SlidePaths=/home/josephc/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [ScreenMapping]
