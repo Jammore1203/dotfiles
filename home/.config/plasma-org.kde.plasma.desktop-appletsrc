@@ -351,6 +351,7 @@ WallpaperSource[$e]=file:$HOME/.local/share/Steam/steamapps/workshop/content/431
 WallpaperWorkShopId=2227187888
 
 [Containments][52][Wallpaper][org.kde.image][General]
+DynamicMode=3
 FillMode=0
 Image=file:///home/josephc/Pictures/Jarvis, More Alcohol.png
 SlidePaths=/home/josephc/.local/share/wallpapers/,/usr/share/wallpapers/
@@ -368,6 +369,7 @@ plugin=org.kde.desktopcontainment
 wallpaperplugin=org.kde.image
 
 [Containments][78][Wallpaper][org.kde.image][General]
+DynamicMode=3
 FillMode=0
 Image=file:///home/josephc/Pictures/Jarvis, More Alcohol.png
 SlidePaths=/home/josephc/.local/share/wallpapers/,/usr/share/wallpapers/
