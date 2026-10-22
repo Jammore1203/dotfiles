@@ -370,8 +370,8 @@ wallpaperplugin=org.kde.image
 
 [Containments][78][Wallpaper][org.kde.image][General]
 DynamicMode=3
-FillMode=0
-Image=file:///home/josephc/Pictures/Jarvis, More Alcohol.png
+FillMode=6
+Image=file:///home/josephc/Pictures/MSC_pic.png
 SlidePaths=/home/josephc/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [ScreenMapping]
