@@ -1,2 +1,3 @@
 [Daemon]
-Timeout=30
+Autolock=false
+Timeout=0

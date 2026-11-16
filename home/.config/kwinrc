@@ -30,6 +30,9 @@ blurEnabled=false
 contrastEnabled=true
 kwin4_effect_dimscreenEnabled=false
 
+[Tiling]
+padding=4
+
 [Tiling][22dba801-07b8-505c-a035-518b5a6ff8ae]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
