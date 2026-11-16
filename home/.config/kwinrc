@@ -1,6 +1,9 @@
 [Activities][LastVirtualDesktop]
 fd3ac053-0323-4fba-927e-c54974b454f0=41083ac0-d3db-4075-817c-0cbc8fed8fef
 
+[Compositing]
+WindowsBlockCompositing=false
+
 [Desktops]
 Id_1=41083ac0-d3db-4075-817c-0cbc8fed8fef
 Id_2=52f77a2b-9c3b-4853-b070-83ce4bf4f823
