@@ -1,6 +1,3 @@
-[Activities][LastVirtualDesktop]
-fd3ac053-0323-4fba-927e-c54974b454f0=41083ac0-d3db-4075-817c-0cbc8fed8fef
-
 [Compositing]
 WindowsBlockCompositing=false
 
@@ -33,10 +30,11 @@ blurEnabled=false
 contrastEnabled=true
 kwin4_effect_dimscreenEnabled=false
 
-[Tiling]
-padding=4
-
 [Tiling][22dba801-07b8-505c-a035-518b5a6ff8ae]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][2565e2a5-3111-46e1-8901-6710b4c35f07][fb23397a-732e-4637-bec7-875ab273f882]
+padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][35f7faf9-784f-5477-bcc7-2b16f91320bd]
@@ -49,6 +47,11 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][41083ac0-d3db-4075-817c-0cbc8fed8fef][fb23397a-732e-4637-bec7-875ab273f882]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][52f77a2b-9c3b-4853-b070-83ce4bf4f823][fb23397a-732e-4637-bec7-875ab273f882]
+padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][58ca410b-ce44-58d6-82b9-fefe44aba0e3]
@@ -64,6 +67,18 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][a468a51b-c8b8-54f8-8417-649bb64c51a8]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][aed51aaf-f80d-4b36-a567-f2db99eeef96][fb23397a-732e-4637-bec7-875ab273f882]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][caae589b-05fc-46ad-94c3-b753d51d9272][fb23397a-732e-4637-bec7-875ab273f882]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][d4c03ad1-2c01-484e-a958-2231b524d675][fb23397a-732e-4637-bec7-875ab273f882]
+padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][d889c912-66f5-5f9f-801a-72dc7df79d95]
