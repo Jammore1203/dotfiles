@@ -1,50 +1,33 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "type": "small",
+    "source": "/home/josephc/Pictures/acoolimagefolder/m1snalrl2whe1.jpeg",
+    // auto = real image in kitty, colour blocks in Tilix/Alacritty
+    "type": "auto",
+    "width": 30,
+    "height": 15,
     "padding": { "top": 1, "left": 2, "right": 3 }
   },
   "display": {
-    "separator": "  ",
-    "color": { "keys": "yellow", "title": "bright_yellow" }
+    // ANSI names, so the colours follow the Desk scheme's terminal palette
+    "color": { "keys": "yellow", "title": "blue", "separator": "90" },
+    "separator": "  "
   },
   "modules": [
+    "title",
+    "separator",
+    "os",
+    "kernel",
+    "uptime",
+    "packages",
+    "shell",
+    { "type": "wm", "key": "WM" },
+    "terminal",
+    "cpu",
+    "gpu",
+    "memory",
+    "disk",
     "break",
-    {
-      "type": "title",
-      "key": " ",
-      "format": "{user-name}@{host-name}"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;146;131;116m────────────────────────────────"
-    },
-    { "type": "os",       "key": "󰣇 os  ", "keyColor": "yellow" },
-    { "type": "kernel",   "key": " ker ", "keyColor": "yellow" },
-    { "type": "uptime",   "key": "󰅐 up  ", "keyColor": "yellow" },
-    { "type": "packages", "key": "󰏖 pkg ", "keyColor": "yellow" },
-    { "type": "shell",    "key": " sh  ", "keyColor": "yellow" },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;146;131;116m────────────────────────────────"
-    },
-    { "type": "de",       "key": "󰧨 de  ", "keyColor": "magenta" },
-    { "type": "wm",       "key": " wm  ", "keyColor": "magenta" },
-    { "type": "terminal", "key": " term", "keyColor": "magenta" },
-    { "type": "display",  "key": "󰍹 disp", "keyColor": "magenta" },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;146;131;116m────────────────────────────────"
-    },
-    { "type": "cpu",      "key": " cpu ", "keyColor": "green" },
-    { "type": "gpu",      "key": "󰢮 gpu ", "keyColor": "green" },
-    { "type": "memory",   "key": " mem ", "keyColor": "green" },
-    { "type": "disk",     "key": "󰋊 disk", "keyColor": "green" },
-    {
-      "type": "custom",
-      "format": "\u001b[38;2;146;131;116m────────────────────────────────"
-    },
-    "colors",
-    "break"
+    "colors"
   ]
 }

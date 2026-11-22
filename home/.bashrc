@@ -20,6 +20,7 @@ alias ...='cd ../..'
 alias mkdir='mkdir -p'
 alias df='df -h'
 alias free='free -h'
+alias ff=fastfetch
 
 # ── modern replacements (guarded: fall back if not installed) ─────────
 if command -v eza >/dev/null 2>&1; then
@@ -68,12 +69,46 @@ else
     PS1='[\u@\h \W]\$ '
 fi
 
-# ── greeter ───────────────────────────────────────────────────────────
+
+# kimi-code
+export PATH="/home/josephc/.kimi-code/bin:$PATH"
+
+# Tilix/VTE: keep the working directory when splitting
+[ -n "$TILIX_ID" ] || [ -n "$VTE_VERSION" ] && [ -r /etc/profile.d/vte.sh ] && . /etc/profile.d/vte.sh
+
+# ranger wrapper: real image previews when running inside kitty (Tilix gets chafa block previews)
+ranger() {
+    # real images only directly in kitty: ranger 1.9.4 can't pass images through tmux (falls back to chafa there)
+    if [ "$TERM" = "xterm-kitty" ] && [ -z "$TMUX" ]; then
+        command ranger --cmd='set preview_images true' --cmd='set preview_images_method kitty' "$@"
+    else
+        command ranger "$@"
+    fi
+}
+
+# fastfetch wrapper: real image logo in kitty, chafa block image elsewhere (Tilix)
+fastfetch() {
+    # kitty-icat survives tmux redraws (kitty unicode placeholders), plain kitty images don't
+    if [ "$TERM" = "xterm-kitty" ] || [ -n "$KITTY_WINDOW_ID" ]; then command fastfetch --logo-type kitty-icat "$@"; else command fastfetch "$@"; fi
+}
+
+# yazi: `y` opens it, and quitting leaves the shell in the folder you were browsing
+y() {
+    local tmp="$(mktemp -t yazi-cwd.XXXXXX)" cwd
+    yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
+}
+
+# ── greeter (last, so the fastfetch wrapper above is used) ────────────
+# kitty opens straight into tmux; panes inside tmux get fastfetch instead of another tmux.
+# exec: closing tmux closes the kitty window.
+if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ] && command -v tmux >/dev/null 2>&1; then
+    exec tmux
+fi
 if command -v fastfetch >/dev/null 2>&1; then
     fastfetch
 elif command -v neofetch >/dev/null 2>&1; then
     neofetch
 fi
-
-# kimi-code
-export PATH="/home/josephc/.kimi-code/bin:$PATH"
